@@ -1,0 +1,41 @@
+<div ng-include="'app/views/terminos/pasos.html'"></div>
+<br>
+
+<div class="box box-primary">
+<div class="box-body">
+    
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            
+            <form name="frm" role="form" >
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="nombre"> * Estado:</label>
+                        <div class="controls">
+                            <input list="estado" class="form-control" ng-model="acta.estado" placeholder="Nombre" required autofocus />
+                            <datalist id="estado">
+                                <option value="Conformidad">
+                                <option value="Rechazo">
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label" for="empresa"> Fecha:</label>
+                        <div class="controls">
+                            <input type="date" class="form-control" ng-model="acta.fecha" placeholder="Nombre"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    
+    
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(acta);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>

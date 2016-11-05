@@ -1,0 +1,68 @@
+<div class="row perfil">
+<div class="col-xs-12">
+	<div class="col-xs-12">
+		<img ng-src="app/img/avatars/{{usuario.avatar}}" class="avatar"> 
+		<a type="file" ng-model="usuario.avatar" class="edit-avatar" data-toggle="modal" href='#imgs'><i class="glyphicon glyphicon-pencil"></i></a>
+	</div>
+        <div class="header">
+            <h3>{{usuario.user}} - {{usuario.sucursal}}</h3>
+            <small>{{usuario.tipo}}</small>
+        </div>
+        <div class="body">
+        	<tabset justified="true" class="perfil">
+				<tab heading="Perfil" class="perfil-tab">
+					<form name="formulario" role="form" >
+					    <div class="form-group">
+					        <label class="control-label"> Nombre:</label>
+				            <input type="text" class="form-control" ng-model="usuario.user" placeholder="Nombre" required />
+					    </div>
+					    <div class="form-group">
+					        <label class="control-label"> Correo:</label>
+				            <input type="email" class="form-control" ng-model="usuario.email" placeholder="ejemplo@ejemplo.com" required />
+					    </div>
+					    <div class="form-group">
+					        <label class="control-label"> Contraseña:</label>
+				            <input type="password" class="form-control" ng-model="usuario.password" placeholder="Contraseña"/>
+					    </div>
+					    <div class="form-group">
+					        <label class="control-label"> Repita la Contraseña:</label>
+				            <input type="password" class="form-control" ng-model="usuario.password_confirmation" placeholder="Contraseña"/>
+					    </div>
+					</form>
+				</tab>
+				<tab heading="Estadisticas">
+
+				</tab>
+			</tabset>
+
+        </div>
+        <div class="footer">
+            <button type="button" class="btn btn-primary pull-right" ng-click="Ok(usuario);" ng-disabled="formulario.$invalid">Guardar</button>
+            <a type="button" class="btn" ng-click="Cancelar();">Salir</a>
+        </div>
+</div>
+</div>
+
+
+<div class="modal fade" id="imgs" style="overflow-y: hidden;">
+	<div class="modal-dialog" style="width: 100% !important;">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="box box-primary" style="height: 400px; padding-top: 15px; overflow: auto;">
+					
+					<div ng-repeat="imagen in imagenes" class="col-sm-4">
+						<div class="well">
+							<a href="" ng-click="select(imagen);" data-dismiss="modal" class="thumbnail">
+								<img ng-src="app/img/avatars/{{imagen.nombre}}" alt="" style=" height: 100px; ">
+							</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-right" data-dismiss="modal">Salir</button>
+			</div>
+		</div>
+	</div>
+</div>

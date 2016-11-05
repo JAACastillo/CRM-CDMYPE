@@ -1,0 +1,44 @@
+<div ng-include="'app/views/terminos/pasos.html'"></div>
+<br>
+
+<div class="box" ng-show="!asistencia">
+
+<div class="box-header">
+    <h2>Seleccione la empresa</h2>
+    <input class="form-control" type="text" ng-model="search" placeholder="Buscar">
+</div>
+
+<div class="box-body" style="height:400px; overflow-y: auto;">
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th>Nombre <span class="caret pull-right"></span></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <tr ng-repeat="entidad in empresas | filter:search" ng-click="select(entidad)" style="cursor:pointer;">
+                <td>{{entidad.nombre}}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
+
+<div class="box-footer">
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="" class="btn" ng-click="Cancelar();">Salir</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="box">
+    {{asistencia.empresa.nombre}}
+</div>
+

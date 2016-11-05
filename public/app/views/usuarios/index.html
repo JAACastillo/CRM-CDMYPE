@@ -1,0 +1,35 @@
+
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<div class="box-body">
+<table datatable="ng" dt-instance="dtInstancia" dt-options="dtOptions" class=" table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID <span class="caret pull-right"></span></th>
+            <th>Nombre <span class="caret pull-right"></span></th>
+            <th>Correo <span class="caret pull-right"></span></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in usuarios | orderBy:columna:orden | filter:search">
+            <td class="text-center"> <opciones></opciones> </td>
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.name}}</td>
+            <td>{{entidad.email}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+

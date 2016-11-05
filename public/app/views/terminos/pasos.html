@@ -1,0 +1,45 @@
+
+<div class="row">
+    <div class="btn-group col-xs-12">
+        <a href="#/asistencia/empresa/{{asistencia.id}}" class="btn col-sm-1" 
+                    ng-class="{ 'active' : pasoActual == 1, 'btn-primary' : pasoReal > 0, 'disabled' : pasoReal <= 0 }"> 
+            Paso 1 : <br>
+            <strong> Empresa </strong>
+        </a>
+        <a href="#/asistencia/tdr/{{asistencia.id}}" class="btn col-sm-1" 
+                    ng-class="{ 'active' : pasoActual == 2, 'btn-primary' : pasoReal > 1, 'disabled' : pasoReal <= 1 }"> 
+            Paso 2 : <br>
+            <strong> TDR </strong>
+        </a>
+        <a href="#/asistencia/consultores/{{asistencia.id}}" class="btn col-sm-2" 
+                    ng-class="{ 'active' : pasoActual == 3, 'btn-primary' : pasoReal > 2, 'disabled' : pasoReal <= 2 }"> 
+            Paso 3 : <br>
+            <strong> Consultores </strong>
+        </a>
+        <a href="#/asistencia/enviados/{{asistencia.id}}" class="btn col-sm-1" 
+                    ng-class="{ 'active' : pasoActual == 4, 'btn-primary' : pasoReal > 3, 'disabled' : pasoReal <= 3 }"> 
+            Paso 4 : <br>
+            <strong> Enviados </strong>
+        </a>
+        <a href="#/asistencia/ofertantes/{{asistencia.id}}" class="btn col-sm-2" 
+                    ng-class="{ 'active' : pasoActual == 5, 'btn-primary' : pasoReal > 4, 'disabled' : pasoReal <= 4 }"> 
+            Paso 5 : <br>
+            <strong> Ofertantes </strong>
+        </a>
+        <a href="#/asistencia/contrato/{{asistencia.id}}" class="btn col-sm-2" 
+                    ng-class="{ 'active' : pasoActual == 6, 'btn-primary' : pasoReal > 5, 'disabled' : pasoReal <= 5 }"> 
+            Paso 6 : <br>
+            <strong> Contrato </strong>
+        </a>
+        <a href="#/asistencia/acta/{{asistencia.id}}" class="btn col-sm-1" 
+                    ng-class="{ 'active' : pasoActual == 7, 'btn-primary' : pasoReal > 6, 'disabled' : pasoReal <= 6 }"> 
+            Paso 7 : <br>
+            <strong> Acta </strong>
+        </a>
+        <a href="#/asistencia/final/{{asistencia.id}}" class="btn col-sm-2" 
+                    ng-class="{ 'active' : pasoActual == 8, 'btn-primary' : pasoReal > 7, 'disabled' : pasoReal <= 6 }"> 
+            Paso 8 : <br>
+            <strong> Final </strong>
+        </a>
+    </div>
+</div>

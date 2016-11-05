@@ -1,0 +1,35 @@
+<div class="tool pull-left">
+    <div class="btn-group pull-left">
+        <!-- Search -->
+        <div class="pull-left">
+            <input ng-model="query" type="text" class="form-control" ng-change="$parent.buscar(dtInstancia,query);">
+        </div>
+        <!-- Refresh -->
+        <button class="btn btn-default" tooltip="Actualizar" ng-click="cargar();">
+            <i class="glyphicon glyphicon-refresh"></i>
+        </button>
+        <button class="btn btn-default" tooltip="Copiar" ng-click="$parent.triggerbtn(dtInstancia,'0');">
+            <i class="glyphicon glyphicon-copy"></i>
+        </button>
+        <button class="btn btn-default" tooltip="Imprimir" ng-click="$parent.triggerbtn(dtInstancia,'1');">
+            <i class="glyphicon glyphicon-print"></i>
+        </button>
+        <button class="btn btn-default" tooltip="Exportar a Excel" ng-click="$parent.triggerbtn(dtInstancia,'2');">
+            <i class="glyphicon glyphicon-export"></i>
+        </button>
+        <!-- Opciones -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="glyphicon glyphicon-th "></i> <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a ng-click="$parent.show(6);">6</a></li>
+            <li><a ng-click="$parent.show(50);">50</a></li>
+            <li><a ng-click="$parent.show(100);">100</a></li>
+          </ul>
+        </div>
+        <button id="crear" class="btn btn-default" tooltip="Crear" ng-click="crear();"> 
+            <i class="glyphicon glyphicon-plus"></i>
+        </button>
+    </div>
+</div>

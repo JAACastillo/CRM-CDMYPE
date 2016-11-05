@@ -1,0 +1,41 @@
+
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<div class="box-body">
+<table datatable="ng" dt-instance="dtInstancia" dt-options="dtOptions" class=" table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>Tema</th>
+            <th>Area</th>
+            <th>Encargado</th>
+            <th>Consultor</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>Tema</th>
+            <th>Area</th>
+            <th>Encargado</th>
+            <th>Consultor</th>
+            <th>Estado</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in capacitaciones">
+            <td class="text-center"> <opciones></opciones> </td>\
+            <td>{{entidad.tema | limitTo:30}} ...</td>
+            <td>{{entidad.especialidad}}</td>
+            <td>{{entidad.asesor}}</td>
+            <td><a href="#/consultor/{{entidad.consultor.consultor_id}}">{{entidad.consultor.consultor}}</a></td>
+            <td>{{entidad.estado}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+

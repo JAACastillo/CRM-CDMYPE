@@ -1,0 +1,20 @@
+
+<div class="row">
+    <div class="btn-group col-xs-12">
+        <a href="#/consultor/{{consultor.id}}" class="btn col-sm-4" 
+            ng-class="{ 'active' : pasoActual == 1, 'btn-primary' : pasoReal > 0}"> 
+            Paso 1 : 
+            <strong> Consultor </strong>
+        </a>
+        <a href="#/consultor/especialidades/{{consultor.id}}" class="btn col-sm-4" 
+            ng-class="{ 'active' : pasoActual == 2, 'btn-primary' : pasoReal > 1 }"> 
+            Paso 2 : 
+            <strong> Especialidades </strong>
+        </a>
+        <a href="#/consultor/historial/{{consultor.id}}" class="btn col-sm-4" 
+            ng-class="{ 'active' : pasoActual == 3, 'btn-primary' : pasoReal > 2, 'disabled' : pasoReal < 3}">
+            Paso 3 : 
+            <strong> Historial </strong>
+        </a>
+    </div>
+</div>

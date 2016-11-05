@@ -1,0 +1,96 @@
+<div class="box box-primary">
+<div class="box-header with-border">            
+    <h3 class="modal-title text-center">Producto</h3>
+</div>
+<div class="box-body">
+
+    <alertas></alertas>
+
+    <form name="frm" role="form" >
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Codigo:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="producto.codigo" placeholder="Nombre" required autofocus />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Nombre:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="producto.nombre" placeholder="Nombre" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="telefono"> Tipo:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="producto.tipo" placeholder="Descripción"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="telefono"> Tamaño:</label>
+                <div class="controls">
+                    <input type="number"  step="any" class="form-control" ng-model="producto.tamano" placeholder="0" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="direccion"> Medida:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="producto.medida" placeholder="Medida" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Precio:</label>
+                <div class="controls">
+                    <input type="number"  step="any" class="form-control" ng-model="producto.precio" placeholder="0.0" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Costo:</label>
+                <div class="controls">
+                    <input type="number"  step="any" class="form-control" ng-model="producto.costo" placeholder="0.0" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Stock:</label>
+                <div class="controls">
+                    <input type="number"  step="any" class="form-control" ng-model="producto.stock" placeholder="0.0" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Stock Minimo:</label>
+                <div class="controls">
+                    <input type="number"  step="any" class="form-control" ng-model="producto.stock_minimo" placeholder="0.0" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Descripción:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="producto.descripcion" placeholder="Descripción" required />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(producto);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="" class="btn" ng-click="Cancelar();">Salir</a>
+</div>
+

@@ -1,0 +1,95 @@
+<div ng-include="'app/views/terminos/pasos.html'"></div>
+<br>
+
+<div class="box box-primary">
+<div class="box-body">
+
+    <form name="frm" role="form" >
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group">
+                <label class="control-label"> * Tema:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="asistencia.tema" placeholder="Nombre" required autofocus />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group">
+                <label class="control-label"> Objetivo General:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="asistencia.obj_general" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12">
+            <div class="form-group">
+                <label class="control-label"> Objetivo Especifico:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="asistencia.obj_especifico" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Productos:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="asistencia.productos"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Especialidad:</label>
+                <div class="controls">
+                    <input type="tel" class="form-control" ng-model="asistencia.especialidad" placeholder="XXXX-XXXX" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Fecha Limite:</label>
+                <div class="controls">
+                    <input type="date" class="form-control" ng-model="asistencia.fecha"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Trabajo Local:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="asistencia.trabajo_local" placeholder="Lugar, Calle etc..." />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Semanas de Ejecución:</label>
+                <div class="controls">
+                    <input type="number" class="form-control" ng-model="asistencia.tiempo_ejecucion" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Financiamiento:</label>
+                <div class="controls">
+                    <input type="number" class="form-control" ng-model="asistencia.financiamiento"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3">
+            <div class="form-group">
+                <label class="control-label"> Aporte Empresarial:</label>
+                <div class="controls">
+                    <input type="number" class="form-control" ng-model="asistencia.aporte" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(asistencia);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>
+

@@ -1,0 +1,52 @@
+<div class="box box-widget widget-user">
+    <div class="widget-user-header bg-aqua-active">
+        <h3 class="widget-user-username">{{usuario.name}}</h3>
+        <h5 class="widget-user-desc">{{usuario.tipo}}</h5>
+    </div>
+    <div class="widget-user-image">
+        <a type="file" style="position:absolute; bottom:0; right:0;" ng-model="usuario.avatar" class="btn btn-default btn-xs" data-toggle="modal" href='#imgs'> <i class="glyphicon glyphicon-pencil"></i> </a>
+        <img ng-src="/img/avatars/{{usuario.avatar}}" class="img-circle" width="100"> 
+    </div>
+    <div class="box-body">
+        <br><br>
+        <alertas></alertas>
+        <form name="form" role="form" >
+            <div class="form-group">
+                <label class="control-label"> Nombre:</label>
+                <input type="text" class="form-control" ng-model="usuario.name" placeholder="Nombre" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Correo:</label>
+                <input type="email" class="form-control" ng-model="usuario.email" placeholder="ejemplo@ejemplo.com" required />
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Contraseña:</label>
+                <input type="password" class="form-control" ng-model="usuario.password" placeholder="Contraseña"/>
+            </div>
+            <div class="form-group">
+                <label class="control-label"> Repita la Contraseña:</label>
+                <input type="password" class="form-control" ng-model="usuario.password_confirmation" placeholder="Contraseña"/>
+            </div>
+        </form>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary pull-right" ng-click="Ok(usuario);" ng-disabled="frm.$invalid">Guardar</button>
+        <a href="" class="btn" ng-click="Cancelar();">Salir</a>
+    </div>
+    <div class="modal fade" id="imgs" style="overflow-y: hidden;">
+        <div class="modal-dialog" style="width: 100% !important;">
+            <div class="modal-content">
+                <div class="modal-body" style="height: 400px; padding-top: 15px; overflow: auto;">
+                    <div ng-repeat="imagen in imagenes" class="col-sm-3">
+                        <a href="" ng-click="usuario.avatar = imagen.nombre" data-dismiss="modal" class="thumbnail">
+                            <img ng-src="/img/avatars/{{imagen.nombre}}" class="img-responsive">
+                        </a>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+  </div>
+</div>

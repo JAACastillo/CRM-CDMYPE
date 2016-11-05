@@ -1,0 +1,47 @@
+
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<div class="box-body">
+<table datatable="ng" dt-instance="dtInstancia" dt-options="dtOptions" class=" table table-bordered table-hover table-responsive">
+    <thead>
+         <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Municipio</th>
+            <th>Dirección</th>
+            <th>AT</th>
+            <th>Cap</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Telefono</th>
+            <th>Municipio</th>
+            <th>Dirección</th>
+            <th>At</th>
+            <th>Cap</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in consultores">
+            <td class="text-center"> <opciones></opciones> </td>
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.nombre | limitTo:20}}...</td>
+            <td>{{entidad.telefono}}</td>
+            <td>{{entidad.municipio.nombre}}</td>
+            <td>{{entidad.direccion | limitTo:15}} ...</td>
+            <td class="text-center">{{entidad.at}}</td>
+            <td class="text-center">{{entidad.cap}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+

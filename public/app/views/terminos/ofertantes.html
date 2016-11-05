@@ -1,0 +1,33 @@
+<div ng-include="'app/views/terminos/pasos.html'"></div>
+<br>
+<div class="box">
+
+<div class="box-body" style="height:350px; overflow-y: auto;">
+<table class=" table table-bordered table-hover table-responsive">
+    <thead>
+         <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Oferta</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="entidad in consultores">
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.consultor}}</td>
+            <td>{{entidad.fecha_oferta}}</td>
+            <td><a href="/{{entidad.doc_oferta}}">Ver oferta</a></td>
+            <td>{{entidad.estado}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(consultores);" ng-disabled="frm.$invalid">Enviar TDR</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>
+</div>
+

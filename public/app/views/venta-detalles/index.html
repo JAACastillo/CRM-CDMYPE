@@ -1,0 +1,56 @@
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<div class="box-body">
+<table datatable class=" table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th ng-click="columna = 'producto.nombre'; orden=!orden">Producto <span class="caret pull-right"></span></th>
+            <th ng-click="columna = 'cantidad'; orden=!orden" class="text-center">Cantidad <span class="caret pull-right"></span></th>
+            <th ng-click="columna = 'precio'; orden=!orden" class="text-center">Precio <span class="caret pull-right"></span></th>
+            <th ng-click="columna = 'pagado'; orden=!orden" class="text-center">Pagado <span class="caret pull-right"></span></th>
+            <th ng-click="columna = 'sub'; orden=!orden" class="text-center">Subtotal <span class="caret pull-right"></span></th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Sub Total</th>
+            <th class="text-center">{{total - total * 0.13 | currency}}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>IVA</th>
+            <th class="text-center">{{total * 0.13 | currency}}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th>Total</th>
+            <th class="text-center">{{total | currency}}</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in ventaDetalles | orderBy:columna:orden | filter:search">
+            <td class="text-center"> <opciones></opciones> </td>
+            <td>{{entidad.producto.nombre}}</td>
+            <td class="text-center">{{entidad.cantidad}}</td>
+            <td class="text-center">{{entidad.precio | currency}}</td>
+            <td class="text-center">{{entidad.pagado | currency}}</td>
+            <td class="text-center" ng-init="sumar(entidad.cantidad * entidad.pagado)">{{entidad.cantidad * entidad.pagado | currency}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+</div>

@@ -1,0 +1,44 @@
+
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<div class="box-body">
+<table datatable="ng" dt-instance="dtInstancia" dt-options="dtOptions" class=" table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Factura</th>
+            <th class="text-center">Entrada</th>
+            <th class="text-center">Salida</th>
+            <th class="text-center">Saldo</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Factura</th>
+            <th class="text-center">Entrada</th>
+            <th class="text-center">Salida</th>
+            <th class="text-center">Saldo</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in cardex">
+            <td></td>
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.created_at | date:'dd-MM-yyyy'}}</td>
+            <td>{{entidad.factura}}</td>
+            <td class="text-center">{{entidad.entrada}}</td>
+            <td class="text-center">{{entidad.salida}}</td>
+            <td class="text-center">{{entidad.saldo}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+

@@ -1,0 +1,60 @@
+<div ng-include="'app/views/consultores/pasos.html'"></div>
+<br>
+
+<div class="box">
+
+<div class="box-header with-border">
+  <span class="label label-primary">{{consultor.at_consultores.length}}</span>
+  <h3 class="box-title">Asistencias Técnicas</h3>
+  <div class="box-tools pull-right">
+      <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="glyphicon glyphicon-minus"></i></button>
+  </div>
+</div>
+
+<div class="box-body">
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+         <tr>
+            <th>ID</th> <th>Tema</th> <th>Empresa</th> <th>Fecha</th> <th>Estado</th>  <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="entidad in consultor.at_consultores">
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.tema | limitTo:30}}...</td>
+            <td><a href="#/clientes/empresario/empresa/{{entidad.empresa.id}}">{{entidad.empresa.nombre  | limitTo:30}}...</a></td>
+            <td>{{entidad.created_at | limitTo:10}}</td>
+            <td>{{entidad.estado}}</td>
+            <td> <a href="#/terminos/{{termino.id}}" class="btn btn-default" title="Ver"> <i class="glyphicon glyphicon-arrow-right"></i> </a> </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+
+<div class="box">
+<div class="box-header with-border">
+  <span class="label label-primary">{{consultor.cap_consultores.length}}</span>
+  <h3 class="box-title">Capacitaciones</h3>
+  <div class="box-tools pull-right">
+      <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse"><i class="glyphicon glyphicon-minus"></i></button>
+  </div>
+</div>
+<div class="box-body">
+<table class="table table-bordered table-hover table-responsive">
+    <thead>
+         <tr>
+            <th>ID</th> <th>Tema</th> <th>Fecha</th> <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="entidad in consultor.cap_consultores">
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.tema | limitTo:60}}...</td>
+            <td>{{entidad.created_at | limitTo:10}}</td>
+            <td> <a href="#/terminos/{{termino.id}}" class="btn btn-default" title="Ver"> <i class="glyphicon glyphicon-arrow-right"></i> </a> </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>

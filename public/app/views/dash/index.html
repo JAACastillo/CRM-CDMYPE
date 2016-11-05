@@ -1,0 +1,31 @@
+<section class="content" ng-init="cargar('mes');">
+    <div class="row text-center">
+        <div class="col-xs-12">
+            <div class="btn-group" role="group">
+              <button class="btn btn-default" ng-click="cargar('mes');">Mes</button>
+              <button class="btn btn-default" ng-click="cargar('ano');">Año</button>
+              <button class="btn btn-default" ng-click="cargar('all');">Todos</button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div ng-include="'app/views/dash/datos.html'"></div>
+    </div>
+    <div class="row">
+        <div ng-include="'app/views/dash/empresas.html'"></div>
+    </div>
+    <div class="row">
+        <div ng-include="'app/views/dash/asistencias.html'"></div>
+    </div>
+    <div class="row">
+        <div ng-include="'app/views/dash/capacitaciones.html'"></div>
+    </div>
+
+   <!--  <div class="row">
+    
+        <div ng-include="'app/views/dash/panel.html'"></div>
+        <div ng-include="'app/views/dash/tops.html'"></div>
+
+    </div> -->
+</section>

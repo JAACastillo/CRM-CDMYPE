@@ -1,0 +1,77 @@
+
+<div class="modal-header">
+    <h3 class="modal-title text-center">{{empresa.nombre}}</h3>
+</div>
+
+<div class="modal-body content">
+    <div class="box">
+        <div class="box-body">
+        <div class="row">
+            <alertas></alertas>
+            <form name="frm" role="form" >
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> * Nombre:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" ng-model="empresa.nombre" placeholder="Nombre" required />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> Web:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" ng-model="empresa.web" placeholder="www.ejemplo.com" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="control-label"> Dirección:</label>
+                    <div class="controls">
+                        <textarea class="form-control" rows="2" ng-model="empresa.direccion" placeholder="Lugar, Calle etc."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> Departamento:</label>
+                    <div class="controls">
+                         <input type="text" class="form-control" ng-model="empresa.departamento" placeholder="Departamento" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> Municipio:</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" ng-model="empresa.municipio" placeholder="Municipio" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> Teléfono:</label>
+                    <div class="controls">
+                        <input type="tel" class="form-control" ng-model="empresa.telefono" placeholder="XXXX-XXXX"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label class="control-label"> Correo:</label>
+                    <div class="controls">
+                        <input type="email" class="form-control" ng-model="empresa.email" placeholder="ejemplo@ejemplo.com"/>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-primary" ng-click="Ok(empresa);" ng-disabled="frm.$invalid">Guardar
+            </button>
+        </div>
+    </div>
+</div>
+

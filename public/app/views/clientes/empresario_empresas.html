@@ -1,0 +1,20 @@
+<div ng-include="'app/views/clientes/pasos.html'"></div>
+<br>
+<div class="box box-primary">
+
+<div class="box-body">
+    
+<!--     <div class="text-center jumbotron" ng-show="!empresario.empresas">
+      <h3>Ninguna empresa vinculada!</h3>
+    </div> -->
+
+    <table class="table table-bordered table-hover table-responsive" ng-show="empresario.empresas">
+    
+    <div ng-include="'app/views/clientes/empresas/form.html'"></div>
+
+
+</div>
+<!-- <div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(empresa);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div> -->

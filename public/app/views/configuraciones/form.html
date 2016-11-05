@@ -1,0 +1,89 @@
+<div class="box box-primary">
+<div class="box-header with-border">            
+    <h3 class="modal-title text-center">Cliente</h3>
+</div>
+<div class="box-body">
+
+    <alertas></alertas>
+
+    <form name="frm" role="form" >
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Nombre:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.nombre" placeholder="Nombre" required autofocus />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Apellido:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.apellido" placeholder="Apellido" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="telefono"> * Sexo:</label>
+                <div class="controls">
+                    <label class="radio-inline"><input type="radio" ng-model="cliente.sexo" value="Hombre" required>Hombre</label>
+                    <label class="radio-inline"><input type="radio" ng-model="cliente.sexo" value="Mujer" required>Mujer</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="telefono"> Teléfono:</label>
+                <div class="controls">
+                    <input type="tel" class="form-control" ng-model="cliente.telefono" placeholder="XXXX-XXXX" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" for="direccion"> Dirección:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.direccion" placeholder="Lugar, Calle etc..." />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label"> Departamento:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.departamento" placeholder="Departamento" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label"> Municipio:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.municipio" placeholder="Municipio" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="email"> Correo:</label>
+                <div class="controls">
+                    <input type="email" class="form-control" ng-model="cliente.email" placeholder="ejemplo@ejemplo.com" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> DUI:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="cliente.dui" placeholder="XXXXXXX-X" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(cliente);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="" class="btn" ng-click="Cancelar();">Salir</a>
+</div>
+

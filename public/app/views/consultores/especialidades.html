@@ -1,0 +1,37 @@
+<div ng-include="'app/views/consultores/pasos.html'"></div>
+<br>
+
+<div class="box box-primary">
+<div class="box-body">
+
+
+    <button ng-click="agregar();" class="btn btn-primary pull-right" style="margin-bottom: 15px;">
+        <i class="glyphicon glyphicon-plus"></i>
+    </button>
+
+    <table class="table table-bordered table-hover table-responsive">
+        <thead>
+            <tr>
+                <th class="text-center">ID</th>
+                <th>Especialidad</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="especialidad in consultor.especialidades">
+                <td class="text-center">{{especialidad.id}}</td>
+                <td>{{especialidad.especialidad}}</td>
+                <td class="text-center">
+                    <button ng-click="quitarespecilidad(especialidad)" class="btn btn-default" title="Eliminar">
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(consultor);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>

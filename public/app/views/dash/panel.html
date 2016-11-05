@@ -1,0 +1,43 @@
+<div class="col-sm-12 col-lg-7">
+    <div class="box box-primary">
+      <div class="box-header with-border">
+        <h3 class="box-title">Ventas Mensuales</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+          <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
+      <div class="box-body">
+        <!-- <div class="chart" > -->
+           <canvas height="150" class="chart chart-line" chart-data="ventas_data" chart-labels="ventas_labels" chart-series="ventas_series"></canvas>
+        <!-- </div> -->
+        <!-- <table class=" table table-bordered table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th ng-click="columna = 'fecha'; orden=!orden">Fecha <span class="caret pull-right"></span></th>
+                    <th ng-click="columna = 'tipo'; orden=!orden">Tipo de Evento <span class="caret pull-right"></span></th>
+                    <th ng-click="columna = 'personas'; orden=!orden" class="text-center">Personas <span class="caret pull-right"></span></th>
+                    <th ng-click="columna = 'servicios'; orden=!orden" class="text-center">Ver <span class="caret pull-right"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center" ng-hide="eventos">
+                    <td colspan="6">
+                        <strong>{{cliente.nombre}}</strong> Apareceran sus últimos eventos
+                    </td>
+                </tr>
+                <tr ng-show="eventos" ng-repeat="entidad in eventos | orderBy:columna:orden | filter:search">
+                    <td>{{entidad.fecha | limitTo:10 }}</td>
+                    <td>{{entidad.tipo}}</td>
+                    <td class="text-center">{{entidad.personas}}</td>
+                    <td class="text-center">
+                        <a class="btn btn-default btn-xs" href="#/evento/detalle/{{entidad.id}}">
+                          <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table> -->
+      </div>
+    </div>
+</div>
