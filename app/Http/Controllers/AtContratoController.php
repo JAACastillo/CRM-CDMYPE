@@ -8,7 +8,7 @@ use Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controllers\Input;
-
+use Carbon\Carbon;
 use App\Bitacora;
 use App\AtContrato;
 use App\AtTermino;
@@ -64,9 +64,9 @@ class AtContratoController extends Controller
                 $accion = "Crear";
             }
 
-            $at = AtTermino::find($data['attermino_id']);
-            $at->estado = "Contratada";
-            $at->save();
+            $partes = explode("-", Request::get('fecha_inicio'));
+
+            $data['fecha_final'] = Carbon::create($partes[0],$partes[1],$partes[2])->addWeeks(Request::get('duracion'))->format('Y-m-d');
             
             // Se guardan los datos y se envia la respuesta
             if($contrato->guardar($data,$accion))

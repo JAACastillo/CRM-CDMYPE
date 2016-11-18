@@ -84,43 +84,20 @@ class AtTermino extends Model {
         }
 
 
-
-        public function getOfertantesAttribute()
-        {
-
-            return $this->consultores()
-                        ->where("doc_oferta", "!=", "")
-                        ->get();
-            //Return "Ofertantes";
-        }
-
-
         public function getPasoAttribute(){
-            switch ($this->estado) {
-            case 'Creado':
-                return 3;
-                break;
-            case 'Enviado':
-                return 4;
-                break;
-            case 'Ofertas Recibidas':
-                return 5;
-                break;
-            case 'Consultor Seleccionado':
-                return 6;
-                break;
-            case 'Contratada':
-                return 7;
-                break;
-            case 'Finalizada':
-                return 8;
-                break;
-            default:
 
-                return 8;
+                if($this->acta)
+                    return 7;
+                elseif($this->contrato)
+                    return 6;
+                elseif($this->consultor)
+                    return 5;
+                elseif($this->ofertantes)
+                    return 4;
+                elseif($this->consultores)
+                    return 3;
 
-                break;
-            }
+                return 1;
 
         }
 
@@ -145,6 +122,11 @@ class AtTermino extends Model {
             return $this->belongsTo('App\Empresa');
         }
 
+        public function empresario()
+        {
+            return $this->belongsTo('App\Empresario');
+        }
+
         public function especialidad()
         {
             return $this->belongsTo('App\Especialidad');
@@ -152,10 +134,13 @@ class AtTermino extends Model {
 
         public function consultor()
         {
-            $consultor = $this->hasOne('App\AtConsultor','attermino_id')->where('estado', '=', 'Seleccionado');
-            return $consultor;
+            return $this->hasOne('App\AtConsultor','attermino_id')->where('estado', '=', 'Seleccionado');
         }
-
+       
+        public function ofertantes()
+        {
+            return $this->hasMany('App\AtConsultor','attermino_id')->where('doc_oferta', "!=", "");
+        }
         public function consultores()
         {
             return $this->hasMany('App\AtConsultor','attermino_id');
@@ -170,7 +155,7 @@ class AtTermino extends Model {
         }
 
         public function ampliacion(){
-            return $this->hasOne('App\AmpliacionContrato', 'attermino_id');
+            return $this->hasOne('App\AtAmpliacion', 'attermino_id');
         }
 
 }

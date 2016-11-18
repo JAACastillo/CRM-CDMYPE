@@ -21,7 +21,6 @@
     <script src="{{ asset('js/angular/angular.min.js') }}"></script>
     <script src="{{ asset('js/angular/angular-sanitize.min.js') }}"></script>
     <script src="{{ asset('js/angular/angular-route.min.js') }}"></script>
-
     
     <script src="{{ asset('app/app.js') }}"></script>
 
@@ -59,6 +58,29 @@
 
     </div>
 
+    <div class="modal fade" id="previsualizar">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="tituloModal"></h4>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="myModalBandera">
+                      <div class="row">
+                        <div class="col-xs-12">
+                        <textarea name="texto" id="texto" class="form-control" cols="30" rows="12" placeholder="Introduzca el texto..." autofocus></textarea>
+                        </div>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" closeprevisualizar>Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="{{ asset('js/modernizr.js') }}"></script>
     <script src="{{ asset('js/classie.js') }}"></script>
@@ -77,6 +99,9 @@
     <script src="{{ asset('js/DataTables/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('js/DataTables/angular/plugins/buttons/angular-datatables.buttons.min.js') }}"></script>
 
+    <script src="{{ asset('js/fullcalendar/moment.min.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script src="{{ asset('js/fullcalendar/ui-calendar.js') }}"></script>
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/demo.js') }}"></script>

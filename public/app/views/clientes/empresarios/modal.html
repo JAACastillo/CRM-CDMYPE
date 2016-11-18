@@ -1,0 +1,67 @@
+
+
+<div class="box">
+
+<div class="box-header">
+    <h2>Seleccione la empresa</h2>
+    <input class="form-control" type="text" ng-model="search" placeholder="Buscar">
+</div>
+
+<div class="box-body" style="height:300px; overflow-y: auto;">
+    <table class="table table-bordered table-hover table-responsive" ng-init="cargarEmpresas();" ng->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Sexo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="entidad in empresas | filter:search" ng-click="select(entidad);" style="cursor:pointer;">
+                <td>{{entidad.id}}</td>
+                <td>{{entidad.nombre}}</td>
+                <td>{{entidad.sexo}}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+</div>
+    <div class="row">
+    <form name="frm">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Empresa:</label>
+                <input type="hidden" ng-model="empresa.empresa_id" required>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="empresa.nombre" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Tipo:</label>
+                <div class="controls">
+                    <input list="categoria" class="form-control" ng-model="empresa.tipo" placeholder="categoria" required autofocus/>
+                    <datalist id="categoria">
+                        <option value="Empresario">
+                        <option value="Empresaria">
+                        <option value="Propietario">
+                        <option value="Propietaria">
+                        <option value="Representante">
+                    </datalist>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+
+<div class="box-footer">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary pull-right" ng-click="Ok(empresa);" ng-disabled="frm.$invalid">Guardar</button>
+            <a href="" class="btn" ng-click="Cancelar();">Salir</a>
+        </div>
+    </div>
+</div>
+</div>
+

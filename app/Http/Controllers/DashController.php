@@ -18,7 +18,7 @@ use App\AtTermino;
 use App\AtContrato;
 use App\CapTermino;
 use App\Evento;
-use App\AmpliacionContrato;
+use App\AtAmpliacion;
 use App\CapContrato;
 
 class DashController extends Controller
@@ -45,7 +45,7 @@ class DashController extends Controller
             $datos->empresasMunicipios = Empresa::selectRaw('municipio_id, count(*) as total')->groupBy('municipio_id')->orderBy('total','desc')->take(5)->get();
 
             // Consultores
-            $datos->consultoresTipos = ConsultorEspecialidad::selectRaw('especialidad_id, count(*) as total')->groupBy('especialidad_id')->orderBy('total','desc')->get();
+            $datos->consultoresTipos = ConsultorEspecialidad::selectRaw('especialidad_id, count(*) as total')->groupBy('especialidad_id')->orderBy('total','desc')->take(8)->get();
             
             // At
             $datos->atTipos = AtTermino::selectRaw('especialidad_id, count(*) as total')->groupBy('especialidad_id')->orderBy('total','desc')->take(8)->get();
@@ -55,7 +55,7 @@ class DashController extends Controller
 
             $datos->atPago = AtContrato::sum('pago');
             $datos->atAporte = AtContrato::sum('aporte');
-            $datos->ampliaciones = AmpliacionContrato::count();
+            $datos->ampliaciones = AtAmpliacion::count();
 
             // Cap
             $datos->capTipos = CapTermino::selectRaw('especialidad_id, count(*) as total')->groupBy('especialidad_id')->orderBy('total','desc')->take(8)->get();

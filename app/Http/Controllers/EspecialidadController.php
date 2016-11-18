@@ -22,7 +22,7 @@ class EspecialidadController extends Controller
     public function index() {
         try {
             // Se cargan todos los especialidades de la empresa que no han sido eliminados
-            $especialidades = Especialidad::orderBy('id','dsc')->get();
+            $especialidades = Especialidad::all();
             // Se envian los especialidades
             return Response::json($especialidades, 200);
             

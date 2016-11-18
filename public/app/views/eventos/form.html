@@ -1,0 +1,92 @@
+<div class="box box-primary">
+<div class="box-body">
+
+    <form name="frm" role="form" >
+        <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+             <div class="form-group">
+                <label class="control-label" for="nombre"> * Organizador:</label>
+                <div class="controls">
+                    <input list="tipos" class="form-control" ng-model="evento.tipo" placeholder="Tipo" required />
+                    <datalist id="tipos">
+                        <option value="CDMYPE">
+                        <option value="CONAMYPE">
+                    </datalist>
+                </div>
+            </div>
+         </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Nombre:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="evento.nombre" placeholder="Nombre" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 col-sm-offset-2">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Lugar:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="evento.lugar" placeholder="Lugar" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Fecha:</label>
+                <div class="controls">
+                    <input type="date" class="form-control" ng-model="evento.fecha" placeholder="Fecha" required />
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(evento);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>
+</div>
+
+
+<div class="box box-primary">
+
+<div class="box-header with-border text-center">
+  <h3 class="box-title">Participantes</h3>
+  <div class="box-tools pull-right">
+    <button class="btn btn-primary" ng-click="agregar();"><i class="fa fa-plus"></i></button>
+    <button class="btn btn-primary" ng-click="correo();"><i class="fa fa-send"></i></button>
+    <a href="pdf/evento/{{evento.id}}" target="_black" class="btn btn-primary"><i class="fa fa-print"></i></a>
+  </div>
+</div>
+<div class="box-body">
+
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+                        <th>Empresario</th>
+                        <th class="text-center">Participo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="participante in evento.participantes">
+                        <td class="text-center">
+                            <button type="button" class="btn btn-xs btn-default" title="Eliminar" ng-click="eliminar(participante)"><i class="glyphicon glyphicon-trash"></i></button> 
+                        </td>
+                        <td><a href="#/clientes/empresario/{{participante.empresario_id}}" >{{participante.empresario}}</a></td>
+                        <td class="text-center">
+                            <div class="checkbox" style="margin:0;">
+                                <label>
+                                    <input type="checkbox" ng-model="participante.participacion" ng-checked="participante.participacion" ng-change="actualizar(participante);">
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>

@@ -56,20 +56,7 @@ class Indicador extends Model {
         public function validar($datos) 
         {
             $reglas = array(
-                'fechaInicio'			=> 'required|date',
-
-		        //'contabilidadFormal'	=> 'required',
-		        // 'ventaNacional'   		=> 'required',
-		        //'costoProduccion'		=> 'required',
-		        //'financiamiento'		=> 'required',
-		        //'capitalSemilla'		=> 'required',
-		       // 'empleadosHombreTemp'	=> 'required|integer',
-		        //'empleadosHombreFijo'	=> 'required|integer',
-		        //'empleadosMujerTemp'	=> 'required|integer',
-		        //'empleadosMujerFijo'	=> 'required|integer',
-		        'empresa_id'			=> 'required',
-                'productos'             => 'required',
-                'mercados'              => 'required'
+		        'empresa_id' => 'required'
             );
             
             $validador = Validator::make($datos,$reglas);

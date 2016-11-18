@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', 'ngSanitize','ui.bootstrap', 'chart.js', 'Services', 'Directives', 'Controllers'])
+var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', 'ngSanitize','ui.bootstrap', 'chart.js', 'ui.calendar', 'Services', 'Directives', 'Controllers'])
 
 .factory('RequestInterceptor', ['CSRF_TOKEN', function(CSRF_TOKEN) {var requestInterceptor = {request: function(config) {config.headers['x-session-token'] = CSRF_TOKEN._token; return config; } }; return requestInterceptor; }])
 .config(['$httpProvider', function($httpProvider) {$httpProvider.defaults.useXDomain = true; $httpProvider.interceptors.push('RequestInterceptor'); }])
@@ -13,33 +13,49 @@ var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', '
 		})
 		
 		// Clientes
-			.when('/empresarios',{
-				controller: 'EmpresariosCtrl',
-				templateUrl: 'app/views/clientes/empresarios/index.html'
-			})
-			.when('/empresas',{
-				controller: 'EmpresasCtrl',
-				templateUrl: 'app/views/clientes/empresas/index.html'
-			})
-			.when('/clientes/empresario/:id',{
-				controller: 'EmpresarioCtrl',
-				templateUrl: 'app/views/clientes/index.html'
-			})
+			// Empresas
+				.when('/empresas',{
+					controller: 'EmpresasCtrl',
+					templateUrl: 'app/views/clientes/empresas/index.html'
+				})
+				.when('/clientes/empresa/:id',{
+					controller: 'EmpresaCtrl',
+					templateUrl: 'app/views/clientes/empresas/empresa.html'
+				})
 
-			.when('/clientes/empresario/empresa/:id',{
-				controller: 'EmpresarioEmpresaCtrl',
-				templateUrl: 'app/views/clientes/empresario_empresas.html'
-			})
+				.when('/clientes/empresa/empresarios/:id',{
+					controller: 'EmpresaEmpresarioCtrl',
+					templateUrl: 'app/views/clientes/empresas/empresarios.html'
+				})
 
-			.when('/clientes/empresa/indicadores/:id',{
-				controller: 'EmpresaIndicadoresCtrl',
-				templateUrl: 'app/views/clientes/indicadores.html'
-			})
+				.when('/clientes/empresa/indicadores/:id',{
+					controller: 'EmpresaIndicadoresCtrl',
+					templateUrl: 'app/views/clientes/empresas/indicadores.html'
+				})
 
-			.when('/clientes/empresa/historial/:id',{
-				controller: 'EmpresaHistorialCtrl',
-				templateUrl: 'app/views/clientes/historial.html'
-			})
+				.when('/clientes/empresa/historial/:id',{
+					controller: 'EmpresaHistorialCtrl',
+					templateUrl: 'app/views/clientes/empresas/historial.html'
+				})
+			// Empresarios
+				.when('/empresarios',{
+					controller: 'EmpresariosCtrl',
+					templateUrl: 'app/views/clientes/empresarios/index.html'
+				})
+				.when('/clientes/empresario/:id',{
+					controller: 'EmpresarioCtrl',
+					templateUrl: 'app/views/clientes/empresarios/empresario.html'
+				})
+
+				.when('/clientes/empresario/empresas/:id',{
+					controller: 'EmpresarioEmpresaCtrl',
+					templateUrl: 'app/views/clientes/empresarios/empresas.html'
+				})
+
+				.when('/clientes/empresario/historial/:id',{
+					controller: 'EmpresarioHistorialCtrl',
+					templateUrl: 'app/views/clientes/empresarios/historial.html'
+				})
 
 		// Consultores
 			.when('/consultores',{
@@ -64,10 +80,10 @@ var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', '
 				controller: 'ATCtrl',
 				templateUrl: 'app/views/terminos/index.html'
 			})
-			.when('/asistencia/empresa/:id',{
-				controller: 'ATEmpresaCtrl',
-				templateUrl: 'app/views/terminos/empresa.html'
-			})
+			// .when('/asistencia/empresa/:id',{
+			// 	controller: 'ATEmpresaCtrl',
+			// 	templateUrl: 'app/views/terminos/empresa.html'
+			// })
 			.when('/asistencia/tdr/:id',{
 				controller: 'ATTdrCtrl',
 				templateUrl: 'app/views/terminos/tdr.html'
@@ -97,11 +113,27 @@ var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', '
 				templateUrl: 'app/views/terminos/final.html'
 			})
 
+		// Eventos
+			.when('/eventos',{
+				controller: 'EventosCtrl',
+				templateUrl: 'app/views/eventos/index.html'
+			})
 
-		.when('/capacitaciones',{
-			controller: 'CapTerminoCtrl',
-			templateUrl: 'app/views/capacitaciones/index.html'
-		})
+			.when('/evento/:id',{
+				controller: 'EventoCtrl',
+				templateUrl: 'app/views/eventos/form.html'
+			})
+
+		// Salidas
+			.when('/salidas',{
+				controller: 'SalidasCtrl',
+				templateUrl: 'app/views/salidas/index.html'
+			})
+
+			.when('/salida/:id',{
+				controller: 'SalidaCtrl',
+				templateUrl: 'app/views/salidas/form.html'
+			})
 
 		.when('/usuarios',{
 			controller: 'UsuariosCtrl',

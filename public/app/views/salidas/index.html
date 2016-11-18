@@ -1,0 +1,40 @@
+
+<div class="box" ng-init="cargar();">
+
+<toolbar></toolbar>
+
+<button type="button" ng-click="print();" class="btn btn-primary" style=" position: absolute; right: 0; z-index: 1000; margin: 10px;"><i class="fa fa-print"></i></button>
+
+<div class="box-body">
+<table datatable="ng" dt-instance="dtInstancia" dt-options="dtOptions" class=" table table-bordered table-hover table-responsive">
+    <thead>
+        <tr>
+            <th class="text-center no-print"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID</th> <th>Fecha</th> <th>Municipio</th> <th>Salida</th> <th>Regreso</th>
+            <th>Encargado</th> <th>Estado</th> <th>Observación</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
+            <th>ID</th> <th>Fecha</th> <th>Municipio</th> <th>Salida</th> <th>Regreso</th>
+            <th>Encargado</th> <th>Estado</th> <th>Observación</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <tr ng-repeat="entidad in salidas">
+            <td class="text-center"> <opciones></opciones> </td>
+            <td>{{entidad.id}}</td>
+            <td>{{entidad.fecha_inicio}}</td>
+            <td>{{entidad.municipio}}</td>
+            <td>{{entidad.hora_salida}}</td>
+            <td>{{entidad.hora_regreso}}</td>
+            <td>{{entidad.responsable}}</td>
+            <td>{{entidad.estado}}</td>
+            <td>{{entidad.observacion | limitTo:30 }}...</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+

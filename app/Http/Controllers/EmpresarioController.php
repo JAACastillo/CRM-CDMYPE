@@ -23,7 +23,7 @@ class EmpresarioController extends Controller
     public function index() {
         try {
             // Se cargan todos los empresarios de la empresa que no han sido eliminados
-            $empresarios = Empresario::orderBy('id','dsc')->with('municipio','empresa')->get();
+            $empresarios = Empresario::orderBy('id','dsc')->with('municipio','empresas')->get();
             // Se envian los empresarios
             return Response::json($empresarios, 200);
             
@@ -36,7 +36,7 @@ class EmpresarioController extends Controller
     public function buscar($id) {
         try {
             // Se cargan todos los empresario de la empresa que no han sido eliminados
-            $empresario = Empresario::where('id', $id)->with('empresa')->first();
+            $empresario = Empresario::where('id', $id)->with('empresas')->first();
             // Se envian los empresario
             return Response::json($empresario, 200);
             
@@ -99,36 +99,5 @@ class EmpresarioController extends Controller
 
     }
 
-    public function empresa()
-    {
-        try {
-            
-            // Se reciben los datos y se asigna la empresa.
-            $data = Request::all();
-            // return Response::json($data, 201);
-
-            // Si verifica si ya existe o si es nuevo
-            if(Request::has('id')){
-                $empresaEmpresario = EmpresaEmpresario::find(Request::get('id'));
-                $accion = "Modificar";
-            }
-            else{
-                $empresaEmpresario = new EmpresaEmpresario;
-                $accion = "Crear";
-            }
-            
-            // Se guardan los datos y se envia la respuesta
-            if($empresaEmpresario->guardar($data,$accion))
-                return Response::json($empresaEmpresario, 201);
-
-            // Si hay errores de validacion se envian
-            return Response::json($empresaEmpresario->errores->all(), 200);
-
-        } catch (Exception $e) {
-            // Si hay error de servidor se envia el error
-            return Response::json($e, 500);
-        }
-
-    }
 
 }

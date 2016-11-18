@@ -6,19 +6,14 @@ angular.module('Services', ['datatables'])
 	var dtOptions = {};
 	
 	function get(){
-
 		dtOptions = DTOptionsBuilder.newOptions() 
 			.withPaginationType('full_numbers') 
 			.withDisplayLength(10)
 			.withButtons([{extend: 'copy', exportOptions: {columns: [1,2,3,4,5] } },{extend: 'print', exportOptions: {columns: [1,2,3,4,5] } }, {extend: 'excel', exportOptions: {columns: [1,2,3,4,5] } }])
 			.withLanguage({"sEmptyTable":     "No data available in table", "sInfo":           "Mostrando _END_ registros de _TOTAL_", "sInfoEmpty":      "Mostrando _END_ de 0 registros", "sInfoFiltered":   "(filtered from _MAX_ total registros)", "sInfoPostFix":    "", "sInfoThousands":  ",", "sLengthMenu":     "Mostrar _MENU_ registros", "sLoadingRecords": "Loading...", "sProcessing":     "Processing...", "sSearch":         "", "sZeroRecords":    "No se encontraron registros", "oPaginate": {"sFirst":    "Primero", "sLast":     "Ultimo", "sNext":     "Siguiente", "sPrevious": "Anterior"}, "oAria": {"sSortAscending":  ": activate to sort column ascending", "sSortDescending": ": activate to sort column descending"} });
-
 		return dtOptions;
 	}
-
-	return {
-		get: get,
-	};
+	return {get: get, };
 })
 
 .factory('Api', function ($http, $q){
@@ -29,29 +24,13 @@ angular.module('Services', ['datatables'])
     function get(url){
 		var defer = $q.defer();
 
-		$http.get(base + url)
-			.success(function (data){
-				defer.resolve(data);
-			})
-			.error(function (data){
-				defer.reject();
-			})
+		$http.get(base + url) .success(function (data){defer.resolve(data); }) .error(function (data){defer.reject(); })
 		return defer.promise; 
 	}
 
 	function post(url, data){
 		var defer = $q.defer();
-		$http.post(base + url, data)
-			.success(function (data, code){
-				if(code==201)
-					defer.resolve(data);
-				else
-					defer.reject(data);
-			})
-			.error( function (data){
-				console.log(data);
-				// $.growl('No hay conexión al servidor', {type: 'warning'});
-			})
+		$http.post(base + url, data) .success(function (data, code){if(code==201) defer.resolve(data); else defer.reject(data); }) .error( function (data){console.log(data); $.growl('No hay conexión al servidor', {type: 'warning'}); })
 		return defer.promise;
 	}
 	return {
@@ -61,25 +40,26 @@ angular.module('Services', ['datatables'])
 })
 
 .factory('Dateme', function(){
+	var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
 
-	function get(){
-		var today = new Date();
-	    var dd = today.getDate();
-	    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
 
-	    var yyyy = today.getFullYear();
-	    if(dd<10){
-	        dd='0'+dd
-	    } 
-	    if(mm<10){
-	        mm='0'+mm
-	    } 
-	    var date = yyyy+'-'+mm+'-'+dd;
-	    return date;
-	}
+	function get(){var date = yyyy+'-'+mm+'-'+dd; return date; }
+	function mes(){return mm; }
+	function ano(){return yyyy; }
 
 	return {
-		get		: get
+		get		: get,
+		mes		: mes,
+		ano		: ano
 	}
 
 });

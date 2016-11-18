@@ -1,26 +1,31 @@
 <div ng-include="'app/views/terminos/pasos.html'"></div>
 <br>
-{{asistencia.selects}}
 <div class="box">
 
 <div class="box-body" style="height:350px; overflow-y: auto;">
+<input type="text" class="form-control" ng-model="search" placeholder="Buscar">
 <table class=" table table-bordered table-hover table-responsive">
     <thead>
          <tr>
             <th class="text-center"><i class="glyphicon glyphicon-cog"></i></th>
             <th>ID</th>
             <th>Nombre</th>
+            <th>Correo</th>
             <th>Especialidad</th>
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="entidad in consultores">
+        <tr ng-repeat="entidad in consultores | filter:search">
             <td class="text-center">
-                <!-- <input type="checkbox" ng-model="consultores" ng-checked="true" > -->
-                <input type="checkbox" checklist-model="asistencia.selects" checklist-value="consultor.id">
+                <div class="checkbox" style="margin:0;" ng-init="entidad.enviar = 1; entidad.attermino_id = asistencia.id">
+                    <label>
+                        <input type="checkbox" ng-model="entidad.enviar" ng-checked="entidad.enviar">
+                    </label>
+                </div>
             </td>
             <td>{{entidad.id}}</td>
-            <td>{{entidad.consultor}}</td>
+            <td><a href="#/consultores/{{entidad.consultor_id}}">{{entidad.consultor}}</a></td>
+            <td>{{entidad.correo}}</td>
             <td>{{entidad.especialidad}}</td>
         </tr>
     </tbody>
@@ -28,7 +33,8 @@
 </div>
 
 <div class="box-footer">
-    <button class="btn btn-primary pull-right" ng-click="Ok(consultores);" ng-disabled="frm.$invalid">Enviar TDR</button>
+    <button class="btn btn-primary pull-right" ng-click="Ok(consultores);" ng-show="!envio">Enviar TDR</button>
+    <button class="btn btn-primary pull-right" ng-click="Ok(consultores);" ng-show="envio" disabled>Enviando</button>
     <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
 </div>
 </div>

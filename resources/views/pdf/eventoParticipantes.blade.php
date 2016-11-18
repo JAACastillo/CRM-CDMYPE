@@ -11,7 +11,8 @@
 	     #header .left {position: absolute; float: left}
 	     #header .right {position: absolute; right: 10px}
 	     .titulo{text-align:center; margin-bottom:0px}
-	     .table, th {border: 1px solid black; margin: 0px; padding: 2px; font-size: 10px;}
+	     .table {border-collapse: collapse;}
+	     .table, th {border: 1px solid black; margin: 0px; padding: 2px; font-size: 12px;}
 	     .table, td {border: 1px solid black; margin: 0px; padding: 2px; font-size: 13px;}
 	   </style>
 
@@ -20,8 +21,8 @@
 <body>
 
 <div id="header" >
-	<img src="assets/img/cdmype-logo.jpg" width="150px" class="left"/>
-	<img src="assets/img/unicaes-logo.jpg" width="75px" class="right" />
+	<img src="img/cdmype-logo.jpg" width="150px" class="left"/>
+	<img src="img/unicaes-logo.jpg" width="75px" class="right" />
 </div>
 
 <h4 class="titulo">
@@ -31,12 +32,11 @@
 <div id="contenido">
 	<div class="datos">
 
-		<p><strong>Nombre del evento: </strong>{{$evento->nombre}}</p>
-		<p><strong>Descripción: </strong>{{$evento->descripcion}}</p>
-		<p><strong>Organizado por: </strong>{{$evento->tipo}}</p>
-		<p>
-			<strong>Lugar: </strong>{{$evento->lugar}}
-			<strong> Fecha: </strong>{{ date("d-m-Y",strtotime($evento->fecha));}}
+		<p><strong>Nombre del evento:</strong> {{$evento->nombre}}</p>
+		<p><strong>Descripción:</strong> {{$evento->descripcion}}</p>
+		<p><strong>Organizado por:</strong> {{$evento->tipo}}</p>
+		<p><strong>Lugar:</strong> {{$evento->lugar}}
+		   <strong>Fecha:</strong> {{ date("d-m-Y", strtotime($evento->fecha)) }}
 		</p>
 
 	</div>
@@ -45,44 +45,34 @@
 		<table class="table">
 			<thead >
 				<tr>
-					<th>N°</th>
-					<th>NOMBRE</th>
-					<th>EMPRESA/S</th>
-					<th>TELÉFONO</th>
-					<th>CORREO ELÉCTRONICO</th>
-					<th>DUI</th>
-					<th>NIT</th>
-					<th>SECTOR ECONOMICO</th>
+					<th>N°</th> <th>NOMBRE</th> <th>EMPRESA/S</th> <th>TELÉFONO</th> <th>CORREO ELÉCTRONICO</th>
+					<th>DUI</th> <th>NIT</th> <th>SECTOR ECONOMICO</th>
 				</tr>
 			</thead>
 			<tbody>
-				<?php
-				$num=1;
-				?>
-				@foreach ($asistencias as $asistencia)
+				@foreach ($asistencias as $key=>$asistencia)
 				<tr>
-						<td style="text-align:center; width:20px">{{ $num }}</td>
-						<td style="width:150px">{{ $asistencia->empresario->nombre }}</td>
-						<td style="text-align:center; width:100px">
-							@foreach($asistencia->empresario->empresa as $empresario)
-                    			<h5 style="margin:0px; width:100px">{{ $empresario->empresas->nombre }}</h5>
-                			@endforeach
-						</td>
-						<td style="text-align:center; width:70px">{{$asistencia->empresario->telefono}} / {{$asistencia->empresario->celular}}</td>
-						<td style="text-align:center; width:100px">{{ $asistencia->empresario->correo }}</td>
-						<td style="text-align:center; width:70px">{{ $asistencia->empresario->dui }}</td>
-						<td style="text-align:center; width:110px">{{ $asistencia->empresario->nit }}</td>
-						<td style="text-align:center; width:150px"> 
-							@foreach($asistencia->empresario->empresa as $empresario)
-                    			<h5 style="margin:0px; width:100px">{{ $empresario->empresas->sector_economico }}</h5>
-                			@endforeach
-						</td>
+					<td style="text-align:center; width:20px">{{ ++$key }}</td>
+					<td style="width:150px">{{ $asistencia->empresarios->nombre }}</td>
+					<td style="text-align:center; width:100px">
+						@foreach($asistencia->empresarios->empresas as $empresa)
+                			<p>{{ $empresa->empresa }}</p>
+            			@endforeach
+					</td>
+					<td style="text-align:center; width:70px">
+						{{$asistencia->empresarios->telefono}}<br>
+						{{$asistencia->empresarios->celular}}
+					</td>
+					<td style="text-align:center; width:100px">{{ $asistencia->empresarios->correo }}</td>
+					<td style="text-align:center; width:70px">{{ $asistencia->empresarios->dui }}</td>
+					<td style="text-align:center; width:110px">{{ $asistencia->empresarios->nit }}</td>
+					<td style="text-align:center; width:150px"> 
+						@foreach($asistencia->empresarios->empresas as $empresa)
+                			<p>{{ $empresa->sector }}</p>
+            			@endforeach
+					</td>
 				</tr>
-				<?php
-				$num++;
-				?>
 				@endforeach
-
 			</tbody>
 		</table>
 

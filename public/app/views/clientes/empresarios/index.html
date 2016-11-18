@@ -31,7 +31,11 @@
             <td class="text-center"> <opciones></opciones> </td>
             <td>{{entidad.id}}</td>
             <td>{{entidad.nombre | limitTo:15}}...</td>
-            <td><a href="#/clientes/empresario/empresa/{{entidad.empresa.empresa_id}}">{{entidad.empresa.empresa | limitTo:15}}...</a></td>
+            <td>
+                <p ng-repeat="empresa in entidad.empresas">
+                    <a href="#/clientes/empresario/empresa/{{empresa.empresa_id}}" title="{{empresa.tipo}}">{{empresa.empresa | limitTo:15}}...</a>
+                </p>
+            </td>
             <td>{{entidad.telefono}}</td>
             <td>{{entidad.correo | limitTo:15}}...</td>
             <td>{{entidad.municipio.nombre}}</td>

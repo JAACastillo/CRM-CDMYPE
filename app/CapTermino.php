@@ -124,29 +124,29 @@ class CapTermino extends Model {
 
         //Pasos
             public function getPasoRealAttribute(){
-                switch ($this->estado) {
-                    case 'Creado':
-                        return 2;
-                        break;
-                    case 'Enviado':
-                        return 4;
-                        break;
-                    case 'Ofertas Recibidas':
-                        return 5;
-                        break;
-                    case 'Consultor Seleccionado':
-                        return 7;
-                        break;
-                    case 'Contratada':
-                        return 8;
-                        break;
-                    case 'Finalizada':
-                        return 8;
-                        break;
-                    default:
-                        # code...
-                        break;
-                }
+                // switch ($this->estado) {
+                //     case 'Creado':
+                //         return 2;
+                //         break;
+                //     case 'Enviado':
+                //         return 4;
+                //         break;
+                //     case 'Ofertas Recibidas':
+                //         return 5;
+                //         break;
+                //     case 'Consultor Seleccionado':
+                //         return 7;
+                //         break;
+                //     case 'Contratada':
+                //         return 8;
+                //         break;
+                //     case 'Finalizada':
+                //         return 8;
+                //         break;
+                //     default:
+                //         # code...
+                //         break;
+                // }
 
             }
 

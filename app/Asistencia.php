@@ -63,7 +63,7 @@ class Asistencia extends Model {
 
         public function empresario() 
         {
-            return $this->belongsTo('Empresario','empresario_id');
+            return $this->belongsTo('App\Empresario','empresario_id');
         }
 
         public function captermino() 

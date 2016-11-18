@@ -11,7 +11,6 @@ use App\Http\Controllers\Controllers\Input;
 
 use App\Empresa;
 use App\Bitacora;
-use App\EmpresaEmpresario;
 
 class EmpresaController extends Controller
 {
@@ -23,7 +22,7 @@ class EmpresaController extends Controller
     public function index() {
         try {
             // Se cargan todos los empresas de la empresa que no han sido eliminados
-            $empresas = Empresa::orderBy('id','dsc')->with('municipio', 'empresario')->get();
+            $empresas = Empresa::orderBy('id','dsc')->with('municipio', 'empresarios')->get();
             // Se envian los empresas
             return Response::json($empresas, 200);
             
@@ -36,9 +35,22 @@ class EmpresaController extends Controller
     public function buscar($id) {
         try {
             // Se cargan todos los empresa de la empresa que no han sido eliminados
-            $empresa = Empresa::where('id', $id)->with('empresario')->first();
+            $empresa = Empresa::where('id', $id)->with('empresarios', 'indicadores')->first();
             // Se envian los empresa
             return Response::json($empresa, 200);
+            
+        } catch (Exception $e) {
+            // Si hay error de servidor se envia el error
+            return Response::json($e, 500);
+        }
+    }
+
+    public function search($txt) {
+        try {
+            // Se cargan todos los empresa de la empresa que no han sido eliminados
+            $empresas = Empresa::where('nombre', 'like' ,'%' . $txt . '%')->get();
+            // Se envian los empresas
+            return Response::json($empresas, 200);
             
         } catch (Exception $e) {
             // Si hay error de servidor se envia el error
@@ -99,38 +111,31 @@ class EmpresaController extends Controller
 
     }
 
-    public function empresarios($id) {
-        try {
-            // Se cargan todos los empresa de la empresa que no han sido eliminados
-            $empresarios = EmpresaEmpresario::where('empresa_id', $id)->get();
-            // Se envian los empresa
-            return Response::json($empresarios, 200);
-            
-        } catch (Exception $e) {
-            // Si hay error de servidor se envia el error
-            return Response::json($e, 500);
-        }
-    }
-
-    public function indicadores($id) {
-        try {
-            // Se cargan todos los empresa de la empresa que no han sido eliminados
-            $indicadores = Empresa::where('id', $id)->with('indicadores','empresario')->first();
-            // Se envian los empresa
-            return Response::json($indicadores, 200);
-            
-        } catch (Exception $e) {
-            // Si hay error de servidor se envia el error
-            return Response::json($e, 500);
-        }
-    }
 
     public function historial($id) {
         try {
-            // Se cargan todos los empresa de la empresa que no han sido eliminados
-            $empresa = Empresa::where('id', $id)->with('terminos','proyectos', 'empresario.empresario.asistencias.captermino')->first();
 
-            // dd($empresa);
+            // Se cargan todos los empresa de la empresa que no han sido eliminados
+            $empresa = Empresa::where('id', $id)->with('terminos','proyectos')->first();
+            // $empresarios = $empresa->empresarios;
+
+            // $eventos = [];
+            // $capacitaciones = [];
+
+            // dd($empresarios[0]->empresario()->nombre);
+            // foreach ($empresarios as $cliente) {
+            //    // foreach ($cliente->empresarios->eventos as $evento) {
+            //    //    $eventos[] = $evento->evento;
+            //    // }
+            //    foreach ($cliente->empresario()->asistencias as $asistenciaCapacitacion) {
+            //       // $capacitacion = $asistenciaCapacitacion->captermino;
+            //       // $capacitacion['asistio'] = $asistenciaCapacitacion->asistio;
+            //       // $capacitaciones[] = $capacitacion;
+            //    }
+            // }
+
+
+            // dd($capacitaciones);
             // Se envian los empresa
             return Response::json($empresa, 200);
             

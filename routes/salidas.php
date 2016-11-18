@@ -1,6 +1,11 @@
 <?php
 
-   Route::resource('salidas', 'SalidasController');
+
+// Salidas
+Route::get('/salidas', 'SalidaController@index');
+Route::get('/salida/{id}', 'SalidaController@buscar');
+Route::post('/salida/guardar', 'SalidaController@guardar');
+Route::post('/salida/eliminar/{id}', 'SalidaController@eliminar');
 
    // Pdf
 

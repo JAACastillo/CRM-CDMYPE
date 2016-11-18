@@ -12,7 +12,7 @@
             <th>Nombre</th>
             <th>Telefono</th>
             <th>Municipio</th>
-            <th>Dirección</th>
+            <th>Especialidades</th>
             <th>AT</th>
             <th>Cap</th>
         </tr>
@@ -24,7 +24,7 @@
             <th>Nombre</th>
             <th>Telefono</th>
             <th>Municipio</th>
-            <th>Dirección</th>
+            <th>Especialidades</th>
             <th>At</th>
             <th>Cap</th>
         </tr>
@@ -36,7 +36,9 @@
             <td>{{entidad.nombre | limitTo:20}}...</td>
             <td>{{entidad.telefono}}</td>
             <td>{{entidad.municipio.nombre}}</td>
-            <td>{{entidad.direccion | limitTo:15}} ...</td>
+            <td>
+                <p ng-repeat="esp in entidad.especialidades">{{esp.especialidad}}</p>
+            </td>
             <td class="text-center">{{entidad.at}}</td>
             <td class="text-center">{{entidad.cap}}</td>
         </tr>

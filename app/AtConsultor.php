@@ -21,7 +21,7 @@ class AtConsultor extends Model {
         'consultor_id'
     );
 
-    protected $appends = ['consultor', 'tema', 'empresa'];
+    protected $appends = ['consultor', 'tema'];
     
     /* Guardar */
 
@@ -76,10 +76,10 @@ class AtConsultor extends Model {
             return $this->atTerminos()->pluck('tema')->first();
         }
 
-        public function getEmpresaAttribute(){
-            $termino = $this->atTerminos()->with('empresa')->first();
-            return $termino->empresa;
-        }
+        // public function getEmpresaAttribute(){
+        //     $termino = $this->atTerminos()->with('empresa')->first();
+        //     return $termino->empresa;
+        // }
 
     /* RELACIÓN */
     

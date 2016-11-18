@@ -2,30 +2,26 @@
 <br>
 
 <div class="box" ng-show="!asistencia">
-
-<div class="box-header">
-    <h2>Seleccione la empresa</h2>
-    <input class="form-control" type="text" ng-model="search" placeholder="Buscar">
-</div>
-
-<div class="box-body" style="height:400px; overflow-y: auto;">
-    <table class="table table-bordered table-hover table-responsive">
+<div class="box-body">
+<div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+    <label for="">Empresa</label>
+    <input class="form-control" type="text" ng-model="search" placeholder="Buscar" ng-change="buscar(search);">
+    <table class="table table-bordered table-hover table-responsive" ng-show="empresas">
         <thead>
             <tr>
-                <th>Nombre <span class="caret pull-right"></span></th>
+                <th class="text-center">Nombre</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </tfoot>
         <tbody>
-            <tr ng-repeat="entidad in empresas | filter:search" ng-click="select(entidad)" style="cursor:pointer;">
+            <tr ng-repeat="entidad in empresas" ng-click="select(entidad)" style="cursor:pointer;">
                 <td>{{entidad.nombre}}</td>
             </tr>
         </tbody>
-    </table>
+    </table>    
+    </div>
+</div>
+    
    
 </div>
 
@@ -38,7 +34,7 @@
 </div>
 </div>
 
-<div class="box">
+<div class="box" ng-show="asistencia.empresa">
     {{asistencia.empresa.nombre}}
 </div>
 

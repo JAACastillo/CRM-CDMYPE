@@ -19,7 +19,7 @@ class EmpresaEmpresario extends Model {
         'empresa_id'
     );
 
-    protected $appends = ['empresa', 'empresario'];
+    protected $appends = ['empresa', 'empresario', 'sector', 'sexo', 'edad'];
 
     /* Guardar */
 
@@ -67,8 +67,17 @@ class EmpresaEmpresario extends Model {
         public function getEmpresaAttribute(){
             return $this->empresa()->pluck('nombre')->first();;
         }
+        public function getSectorAttribute(){
+            return $this->empresa()->pluck('sector_economico')->first();;
+        }
         public function getEmpresarioAttribute(){
             return $this->empresario()->pluck('nombre')->first();;
+        }
+        public function getSexoAttribute(){
+            return $this->empresario()->pluck('sexo')->first();;
+        }
+        public function getEdadAttribute(){
+            return $this->empresario()->pluck('edad')->first();;
         }
 
 	/* Relaciones */

@@ -37,7 +37,7 @@
         <tr ng-repeat="entidad in atterminos">
             <td class="text-center"> <opciones></opciones> </td>\
             <td>{{entidad.tema | limitTo:30}} ...</td>
-            <td><a href="#/empresa/{{entidad.empresa.id}}">{{entidad.empresa.nombre}}</a></td>
+            <td><a href="#/clientes/empresa/{{entidad.empresa.id}}">{{entidad.empresa.nombre}}</a></td>
             <td>{{entidad.contrato.pago | currency}}</td>
             <td>{{entidad.especialidad}}</td>
             <!-- <td>{{entidad.usuario.nombre}}</td> <-->

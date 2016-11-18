@@ -22,7 +22,8 @@ class Empresario extends Model {
         'sexo',
         'correo',
         'telefono',
-        'celular'
+        'celular',
+        'edad'
     );
     
     protected $appends = ['paso'];
@@ -65,12 +66,12 @@ class Empresario extends Model {
                 // 'correo' => 'email|max:75|unique:empresarios'
             );
             
-            if ($this->exists) 
-            {
-                $reglas['nit'] .= ',nit,' . $this->id;
-                $reglas['dui'] .= ',dui,' . $this->id;
-                $reglas['correo'] .= ',correo,' . $this->id;
-            }
+            // if ($this->exists) 
+            // {
+            //     $reglas['nit'] .= ',nit,' . $this->id;
+            //     $reglas['dui'] .= ',dui,' . $this->id;
+            //     $reglas['correo'] .= ',correo,' . $this->id;
+            // }
             
             $validator = Validator::make($datos,$reglas);
 
@@ -92,9 +93,9 @@ class Empresario extends Model {
     /* Relaciones */
 
         //
-        public function empresa() 
+        public function empresas() 
         {
-            return $this->hasOne('App\EmpresaEmpresario','empresario_id');
+            return $this->hasMany('App\EmpresaEmpresario','empresario_id');
         }
 
         public function asistencias() 

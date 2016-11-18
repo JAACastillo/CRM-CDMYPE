@@ -9,8 +9,8 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Fecha</th>
-            <th>Oferta</th>
-            <th>Estado</th>
+            <th class="text-center">Oferta</th>
+            <th class="text-center">Seleccionar</th>
         </tr>
     </thead>
     <tbody>
@@ -18,16 +18,23 @@
             <td>{{entidad.id}}</td>
             <td>{{entidad.consultor}}</td>
             <td>{{entidad.fecha_oferta}}</td>
-            <td><a href="/{{entidad.doc_oferta}}">Ver oferta</a></td>
-            <td>{{entidad.estado}}</td>
+            <td class="text-center"><a href="ofertas/{{entidad.doc_oferta}}" target="_black"><button> <i class="fa fa-file"></i> Ver oferta</button></a></td>
+            <td class="text-center">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="entidad.estado" ng-model="entidad.estado" value="Seleccionado"
+                         ng-change="seleccionar(entidad);">
+                    </label>
+                </div>
+            </td>
         </tr>
     </tbody>
 </table>
 </div>
 
-<div class="box-footer">
+<!-- <div class="box-footer">
     <button class="btn btn-primary pull-right" ng-click="Ok(consultores);" ng-disabled="frm.$invalid">Enviar TDR</button>
     <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
-</div>
+</div> -->
 </div>
 

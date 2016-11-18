@@ -1,25 +1,17 @@
 <?php
 
-Route::resource('eventos', 'EventosController');
 
+// Eventos
+Route::get('/eventos', 'EventoController@index');
+Route::get('/evento/{id}', 'EventoController@buscar');
+Route::post('/evento/guardar', 'EventoController@guardar');
+Route::post('/evento/eliminar/{id}', 'EventoController@eliminar');
 
-Route::get('eventos/participantes/{idEvento}',
-			[
-				'as' => 'eventosParticipantes',
-				'uses' => 'EventosController@participantes'
-			 ]);
-Route::post('eventos/participantes/{idEvento}',
-			[
-				'as' => 'eventosParticipantes',
-				'uses' => 'EventosController@participantesGuardar'
-			 ]);
-Route::get('eventos/participantes/pdf/{idEvento}',
-			[
-				'as' => 'eventosParticipantesPdf',
-				'uses' => 'EventosController@participantesPDF'
-			 ]);
-Route::post('eventos/participantes/correo/{id}',
-			[
-				'as' => 'eventosParticipantesCorreo',
-				'uses' => 'EventosController@participantesCorreo'
-			 ]);
+// Participantes
+Route::get('/participantes', 'ParticipanteEventoController@index');
+Route::get('/participante/{id}', 'ParticipanteEventoController@buscar');
+Route::post('/participante/guardar', 'ParticipanteEventoController@guardar');
+Route::post('/participante/eliminar/{id}', 'ParticipanteEventoController@eliminar');
+
+// Correo
+Route::post('/participante/correo', 'ParticipanteEventoController@eliminar');

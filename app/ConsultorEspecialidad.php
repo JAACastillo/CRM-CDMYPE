@@ -21,7 +21,7 @@ class ConsultorEspecialidad extends Model {
         'especialidad_id'
     );
 
-     protected $appends = ['consultor', 'especialidad'];
+     protected $appends = ['consultor', 'especialidad', 'correo'];
     
     /* Guardar */
 
@@ -70,6 +70,10 @@ class ConsultorEspecialidad extends Model {
 
         public function getConsultorAttribute(){
             return $this->consultor()->pluck('nombre')->first();;
+        }
+
+        public function getCorreoAttribute(){
+            return $this->consultor()->pluck('correo')->first();;
         }
 
         public function getEspecialidadAttribute(){

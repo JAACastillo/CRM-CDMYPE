@@ -1,0 +1,75 @@
+<div class="box box-primary">
+<div class="box-body">
+
+    <form name="frm" role="form" >
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Lugar:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="salida.municipio" placeholder="Destino" required autofocus />
+                    <input type="text" class="form-control" ng-model="salida.lugar_destino"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Fecha:</label>
+                <div class="controls">
+                    <input type="date" class="form-control" ng-model="salida.fecha_inicio" placeholder="Fecha" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Encargado:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="salida.responsable" placeholder="Encargado" required />
+                    <input type="text" class="form-control" ng-model="salida.encargado"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Objetivo:</label>
+                <div class="controls">
+                    <textarea ng-model="salida.objetivo" class="form-control" cols="30" rows="3" placeholder="Objetivo" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Justificación:</label>
+                <div class="controls">
+                    <textarea ng-model="salida.justificacion" class="form-control" cols="30" rows="3" placeholder="Objetivo" required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Observación:</label>
+                <div class="controls">
+                    <input type="text" class="form-control" ng-model="salida.observacion" placeholder="Observacion" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Participantes:</label>
+                <div class="controls">
+                    <span class="badge" ng-repeat="participante in salida.participantes">
+                        <button type="button" class="btn btn-xs btn-default" title="Eliminar" ng-click="eliminar(participante);"><i class="fa fa-remove"></i></button> 
+                        {{participante.participante}}
+                    </span>
+                    <span class="badge">
+                        <button type="button" class="btn btn-xs btn-default" title="Eliminar" ng-click="agregar();"><i class="fa fa-plus"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <button class="btn btn-primary pull-right" ng-click="Ok(salida);" ng-disabled="frm.$invalid">Guardar</button>
+    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>
+</div>

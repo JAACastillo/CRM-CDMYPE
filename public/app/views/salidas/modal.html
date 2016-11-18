@@ -1,0 +1,50 @@
+<div class="box box-primary">
+<div class="box-body">
+
+    <form name="frm" role="form" >
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> * Firma:</label>
+                <div class="controls">
+                    <select ng-model="firma" class="form-control" required autofocus>
+                        <option value="director">Director</option>
+                        <option value="directora">Directora</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Mes:</label>
+                <div class="controls">
+                    <select ng-model="mes" class="form-control" required>
+                        <option value="01">Enero</option>
+                        <option value="02">Febrero</option>
+                        <option value="03">Marzo</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Mayo</option>
+                        <option value="06">Junio</option>
+                        <option value="07">Julio</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label class="control-label" for="nombre"> Año:</label>
+                <div class="controls">
+                    <input type="number" class="form-control" ng-model="ano" required />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="box-footer">
+    <a class="btn btn-primary btn-block" href="pdf/salida/{{ano}}/{{mes}}/{{firma}}" target="_blank" ng-disabled="frm.$invalid">Imprimir</a>
+</div>
+</div>

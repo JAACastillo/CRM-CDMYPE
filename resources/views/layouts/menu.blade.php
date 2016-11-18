@@ -21,15 +21,10 @@
                     <a href="javascript: return false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                         Clientes <span class="caret"></span>
                     </a>
-
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="#/empresas">
-                                Empresas
-                            </a>
-                            <a href="#/empresarios">
-                                Empresarios
-                            </a>
+                            <a href="#/empresas"> Empresas </a>
+                            <a href="#/empresarios"> Empresarios </a>
                         </li>
                     </ul>
                 </li>
@@ -37,7 +32,18 @@
                 <li><a href="#/consultores">Consultores</a></li>
                 <li><a href="#/asistencias">Asistencias Tecnicas</a></li>
                 <li><a href="#/capacitaciones">Capacitaciones</a></li>
-                <li><a href="#/eventos">Eventos</a></li>
+                <li class="dropdown">
+                    <a href="javascript: return false" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        Otros <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="#/eventos"> Eventos </a>
+                            <a href="#/salidas"> Salidas </a>
+                            <a href="#/materiales"> Materiales </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
 
 

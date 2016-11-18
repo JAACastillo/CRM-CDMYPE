@@ -1,58 +1,162 @@
 <div ng-include="'app/views/terminos/pasos.html'"></div>
 <br>
 
-<div class="box box-primary">
-<div class="box-body">
+<div class="box box-primary" ng-show="contrato">
+    <div class="box-body">
+        
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <br><br><br>          
+                <button  class="btn btn-default btn-block" ng-click="show = contrato">
+                    <i class="fa fa-show"></i>
+                    Contrato
+                </button>
+                <button  class="btn btn-default btn-block" ng-click="show = ampliacion" ng-show="ampliacion">
+                    <i class="fa fa-show"></i>
+                    Ampliación
+                </button>
+                <br><br><br>          
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<div class="box box-primary" ng-if="show == contrato">
+    <div class="box-header with-border">
+    <h1></h1>
+      <div class="box-tools">
+        <span class="badge">{{contrato.fecha_final}}</span>
+        <a href="pdf/contrato/{{asistencia.id}}" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i></a>
+      </div>
+    </div>
+    <div class="box-body">
+        
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                
+                <form name="frm" role="form" >
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="nombre"> * Lugar:</label>
+                            <div class="controls">
+                                <input type="text" class="form-control" ng-model="contrato.lugar_firma" placeholder="Nombre" required autofocus />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="empresa"> Fecha:</label>
+                            <div class="controls">
+                                <input type="date" class="form-control" ng-model="contrato.fecha_inicio" placeholder="Nombre"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group">
+                            <label class="control-label" for="nit"> Duración:</label>
+                            <div class="controls">
+                                <input type="number" class="form-control" ng-model="contrato.duracion"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="nombre"> Pago:</label>
+                            <div class="controls">
+                                <input type="number" class="form-control" ng-model="contrato.pago"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="nombre"> % CDMYPE:</label>
+                            <div class="controls">
+                                <input type="number" class="form-control" ng-model="contrato.aporte"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="form-group">
+                            <label class="control-label" for="nombre"> % Empresarial:</label>
+                            <div class="controls">
+                                <input type="number" class="form-control" ng-model="contrato.aporte_empresario"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary pull-right" ng-click="Ok(contrato);" ng-disabled="frm.$invalid">Guardar</button>
+        <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+    </div>
+</div>
+
+<div class="box box-primary" ng-if="show == ampliacion">
+    <div class="box-header with-border">
+    <h1></h1>
+      <div class="box-tools">
+        <a href="pdf/ampliacion/{{asistencia.id}}" target="_blank" class="btn btn-primary"><i class="fa fa-print"></i></a>
+      </div>
+    </div>
+    <div class="box-body">
     
     <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
             
             <form name="frm" role="form" >
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label" for="nombre"> * Fecha:</label>
+                        <div class="controls">
+                            <input type="date" class="form-control" ng-model="ampliacion.fecha" required autofocus />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="control-label" for="empresa"> Solicitante:</label>
+                        <div class="controls">
+                            <input list="solicitante" class="form-control" ng-model="ampliacion.solicitante"/>
+                            <datalist id="solicitante">
+                                <option value="Consultor">                                
+                                <option value="Empresario">                              
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xs-12">
                     <div class="form-group">
-                        <label class="control-label" for="nombre"> * Lugar:</label>
+                        <label class="control-label" for="nit"> Razonamiento:</label>
                         <div class="controls">
-                            <input type="text" class="form-control" ng-model="contrato.lugar_firma" placeholder="Nombre" required autofocus />
+                            <input type="text" class="form-control" ng-model="ampliacion.razonamiento"/>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="empresa"> Del:</label>
+                        <label class="control-label" for="nombre"> Periodo:</label>
                         <div class="controls">
-                            <input type="date" class="form-control" ng-model="contrato.fecha_inicio" placeholder="Nombre"/>
+                            <input list="periodo" class="form-control" ng-model="ampliacion.periodo"/>
+                            <datalist id="periodo">
+                                <option value="Dias">                                
+                                <option value="Semanas">                                
+                                <option value="Meses">                                
+                            </datalist>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
                     <div class="form-group">
-                        <label class="control-label" for="empresa"> Al:</label>
+                        <label class="control-label" for="nombre"> Tiempo:</label>
                         <div class="controls">
-                            <input type="date" class="form-control" ng-model="contrato.fecha_final" placeholder="Nombre"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label" for="nit"> Duración:</label>
-                        <div class="controls">
-                            <input type="number" class="form-control" ng-model="contrato.duracion"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label" for="nombre"> Pago:</label>
-                        <div class="controls">
-                            <input type="number" class="form-control" ng-model="contrato.pago"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-4">
-                    <div class="form-group">
-                        <label class="control-label" for="nombre"> Aporte:</label>
-                        <div class="controls">
-                            <input type="number" class="form-control" ng-model="contrato.aporte"/>
+                            <input type="number" class="form-control" ng-model="ampliacion.tiempo_ampliacion"/>
                         </div>
                     </div>
                 </div>
@@ -62,8 +166,9 @@
     </div>
     
     
-</div>
-<div class="box-footer">
-    <button class="btn btn-primary pull-right" ng-click="Ok(contrato);" ng-disabled="frm.$invalid">Guardar</button>
-    <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+    </div>
+    <div class="box-footer">
+        <button class="btn btn-primary pull-right" ng-click="OkAmpliacion(ampliacion);" ng-disabled="frm.$invalid">Guardar</button>
+        <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+    </div>
 </div>

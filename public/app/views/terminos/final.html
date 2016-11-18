@@ -7,13 +7,13 @@
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
             
-            <a href="/pdf/tdr/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">TDR</a>
-            <a href="/pdf/contrato/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Contrato</a>
-            <a href="/pdf/ampliación/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Ampliación</a>
-            <a href="/pdf/acta/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Acta</a>
-            <a href="/pdf/pago/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Pago</a>
-            <a href="/pdf/recibo/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Recibo</a>
-            <a href="/pdf/informe/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Informe</a>
+        <a ng-show="asistencia" href="/pdf/tdr/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">TDR</a>
+        <a ng-show="asistencia.contrato" href="/pdf/contrato/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Contrato</a>
+        <a ng-show="asistencia.ampliacion" href="/pdf/ampliacion/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Ampliación</a>
+        <a ng-show="asistencia.acta" href="/pdf/acta/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Acta</a>
+        <a href="/pdf/aporte/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Pago</a>
+        <a href="/pdf/recibo/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Recibo</a>
+        <a href="/pdf/informe/{{asistencia.id}}" target="_blank" class="btn btn-default btn-block">Informe</a>
 
         </div>
     </div>

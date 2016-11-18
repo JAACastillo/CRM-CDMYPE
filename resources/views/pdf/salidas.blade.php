@@ -8,14 +8,16 @@
         #contenido {font-family: "arial black" ;text-align:justify; font-size: 13px; line-height: 15px}
         .titulo{text-align:center;}
         .asistencia {margin-top: 10px;}
-        .table, th {border: 1px solid black; margin: 0px; padding: 5px; font-size: 10px;}
-        .table>thead{background-color: gray; color:white;}
-        .table, td {border: 1px solid black; margin: 0px; padding: 5px; font-size: 10px;}
+        table {border-collapse: collapse;}
+        table, th {border: 1px solid black; margin: 0px; padding: 5px; font-size: 11px;}
+        table>thead{background-color: gray; color:white;}
+        table, td {border: 1px solid black; margin: 0px; padding: 5px; font-size: 11px;}
         .datos {margin-left: 10px;}
 
         .firmas .firm { display: inline-block; position: absolute; text-align: center;}
-        .director {float: right; margin-left: -750px}
-        .decano {float: right; margin-left: 550; position: absolute;}
+        .director {position: absolute; left: -400px;}
+        .decano {position: absolute; right: -400px;}
+        strong{margin-left: 25px;}
 
       </style>
     <?php
@@ -33,13 +35,15 @@
 <div id="contenido">
    <div class="datos">
       <p><strong>GENERALIDADES:</strong></p>
-      <span><strong>UNIDAD:</strong> Centro de Desarrollo de Micro y Pequeña Empresa</span>&nbsp;&nbsp;&nbsp;
-      <span><strong>MES/AÑO: </strong>{{$meses[$mes-1]}} {{$ano}} </span>&nbsp;&nbsp;&nbsp;
-      <span><strong>FECHA DE SOLICITUD: </strong>{{date('d/m/Y')}}</span>
+      <p>
+        <strong>UNIDAD:</strong>              Centro de Desarrollo de Micro y Pequeña Empresa.
+        <strong>MES/AÑO:</strong>             {{$meses[$mes-1]}} {{$ano}}
+        <strong>FECHA DE SOLICITUD:</strong>  {{date('d/m/Y')}}
+      </p>
    </div>
    <div class="asistencia">
 
-      <table class="table">
+      <table>
          <thead>
             <tr>
                <th>FECHA</th>
@@ -58,30 +62,32 @@
             @foreach ($salidas as $salida)
             <tr>
               <td style="text-align: center;">
-                {{date("d/m/Y", strtotime($salida->fecha_inicio)); }}
+                {{ date("d/m/Y", strtotime($salida->fecha_inicio)) }}
               </td>
               <td style="text-align: center;">
-                {{date("g:i a", strtotime($salida->hora_salida));}}<br>{{date("g:i a", strtotime($salida->hora_regreso));}}
+                {{ date("g:i a", strtotime($salida->hora_salida)) }}<br>
+                {{ date("g:i a", strtotime($salida->hora_regreso))}}
               </td>
               <td style="text-align: center;">
-                {{$salida->municipio->municipio}}
+                {{$salida->municipio}}
               </td>
-             <?php
-		$participantes = Participante::where('salida_id', $salida->id)->get();
-		
-               ?>
+             {{--  @foreach ($salida->participantes as $participante)
+                {{ $participante }}
+              @endforeach --}}
 
-             <td> {{ sizeof($participantes)  }}
+             <td style="text-align: center;">
+                {{ sizeof($salida->participantes)  }}
               <td>
-  
-                @foreach ($participantes as $participante)
-                    <span>{{$participante->participante->nombre}}</span><br>
+                <ul style="padding-left: 15px;">
+                @foreach ($salida->participantes as $participante)
+                    <li>{{$participante->participante}}</li>
                 @endforeach
+                </ul>
               </td>
               <td>{{$salida->justificacion}}</td>
               <td>{{$salida->objetivo}}</td>
-              <td>{{$salida->responsable->nombre}}</td>
-              <td>{{--- $salida->estado --}}</td>
+              <td>{{$salida->responsable}}</td>
+              <td>{{-- $salida->estado --}}</td>
               <td>{{$salida->observacion}}</td>
             </tr>
             @endforeach
@@ -93,7 +99,7 @@
   <div class="firmas">
     <div class="firm director">
       <p>F.____________________________</p>
-      @if ($firma == 1)
+      @if ($firma == 'director')
         <p>Msc. Enrique Reyes Escobar</p>
         <p>Director CDMYPE UNICAES</p>
       @else

@@ -1,7 +1,25 @@
 <div ng-include="'app/views/terminos/pasos.html'"></div>
 <br>
 
-<div class="box box-primary">
+<div class="box box-primary" ng-show="asistencia.acta">
+    <div class="box-body">
+        
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+                <br><br><br>          
+                <button  class="btn btn-default btn-block" ng-click="show = acta">
+                    <i class="fa fa-show"></i>
+                    Acta
+                </button>
+                <br><br><br>          
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<div class="box box-primary" ng-if="show == acta">
 <div class="box-body">
     
     <div class="row">
@@ -38,4 +56,5 @@
 <div class="box-footer">
     <button class="btn btn-primary pull-right" ng-click="Ok(acta);" ng-disabled="frm.$invalid">Guardar</button>
     <a href="javascript:window.history.back();" class="btn" ng-click="Cancelar();">Volver</a>
+</div>
 </div>
