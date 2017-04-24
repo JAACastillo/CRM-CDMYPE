@@ -9,7 +9,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controllers\Input;
 
-use App\CapTermino;
+use App\Models\Cap\Termino;
 
 class CapacitacionesController extends Controller
 {
@@ -21,7 +21,7 @@ class CapacitacionesController extends Controller
     public function index() {
         try {
             // Se cargan todos los terminos de la empresa que no han sido eliminados
-            $terminos = Captermino::orderBy('id','dsc')
+            $terminos = Termino::orderBy('id','dsc')
                         ->with('contrato', 'consultor')
                         ->get();
                         
@@ -37,7 +37,7 @@ class CapacitacionesController extends Controller
     public function getBuscar($id) {
         try {
             // Se cargan todos los cliente de la empresa que no han sido eliminados
-            $cliente = Captermino::find($id);
+            $cliente = Termino::find($id);
             // Se envian los cliente
             return Response::json($cliente, 200, array('content-type' => 'application/json', 'Access-Control-Allow-Origin' => '*'));
             
@@ -58,9 +58,9 @@ class CapacitacionesController extends Controller
 
             // Si verifica si ya existe o si es nuevo
             if(Request::has('id'))
-                $cliente = Captermino::find(Request::get('id'));
+                $cliente = Termino::find(Request::get('id'));
             else
-                $cliente = new Captermino;
+                $cliente = new Termino;
             
             // Se guardan los datos y se envia la respuesta
             if($cliente->guardar($data))
@@ -80,7 +80,7 @@ class CapacitacionesController extends Controller
     {
         try{
             // Se busca al cliente y se elimina
-            $cliente = Captermino::find($id);
+            $cliente = Termino::find($id);
 
             $cliente->delete();
             // Se retorna el cliente eliminado

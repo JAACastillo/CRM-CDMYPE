@@ -9,9 +9,9 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controllers\Input;
 
-use App\Consultor;
-use App\Bitacora;
-use App\ConsultorEspecialidad;
+use App\Models\Consultor;
+use App\Models\Bitacora;
+use App\Models\ConsultorEspecialidad;
 
 class ConsultorController extends Controller
 {

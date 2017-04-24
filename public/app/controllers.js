@@ -884,6 +884,66 @@ angular.module('Controllers', [])
 		
 	})
 
+
+// Cap
+	.controller('CapCtrl', function (Api, $scope, $location, $log, $modal) {
+
+		$scope.$emit('Titulo', { titulo: 'Capacitaciones', subtitulo: 'Listado' });
+		$scope.capterminos = [];
+		$scope.dtInstancia = {};
+
+		$scope.cargar = function () {
+		    Api.get('capacitaciones').then(function(data){ $scope.capterminos = data;
+		    }, function (data){ $.growl('No se pudieron cargar los datos', {type: 'warning'}); });
+		};
+
+		$scope.crear = function(){ $location.path('/capacitaciones/tdr/nuevo') };
+
+		$scope.actualizar = function(termino){ 
+			switch(termino.paso){
+				case 1:
+					$location.path('/capacitacion/tdr/' + termino.id); 
+					break
+				case 2:
+					$location.path('/capacitacion/consultores/' + termino.id); 
+					break
+				case 3:
+					$location.path('/capacitacion/enviados/' + termino.id); 
+					break
+				case 4:
+					$location.path('/capacitacion/ofertantes/' + termino.id); 
+					break
+				case 5:
+					$location.path('/capacitacion/contrato/' + termino.id); 
+					break
+				case 6:
+					$location.path('/capacitacion/acta/' + termino.id); 
+					break
+				case 7:
+					$location.path('/capacitacion/final/' + termino.id); 
+					break
+
+			}
+		};
+
+		// Eliminar
+		$scope.eliminar = function(captermino){
+			if (confirm('¿Desea eliminar el Registro?')) {
+				Api.post('capacitacion/eliminar/'+ captermino.id).then(function(data){
+					$.growl('Guardado', {type: 'success'});
+					for (var i in $scope.capterminos ) {
+						if ($scope.capterminos[i].id === data.id ){
+							$scope.capterminos.splice(i, 1);
+						}
+					}
+	  			}, function (data){
+					$.growl('No se pudo eliminar', {type: 'warning'});
+				});
+			}
+		};
+
+	})
+
 // Eventos
 	.controller('EventosCtrl', function (Api, $scope, $location, $modal) {
 

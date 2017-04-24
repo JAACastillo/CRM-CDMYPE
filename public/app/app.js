@@ -113,6 +113,11 @@ var app = angular.module('app', ['ngRoute','datatables', 'datatables.buttons', '
 				templateUrl: 'app/views/terminos/final.html'
 			})
 
+		// Cap
+			.when('/capacitaciones',{
+				controller: 'CapCtrl',
+				templateUrl: 'app/views/capacitaciones/index.html'
+			})
 		// Eventos
 			.when('/eventos',{
 				controller: 'EventosCtrl',

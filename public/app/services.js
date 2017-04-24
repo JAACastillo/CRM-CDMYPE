@@ -19,19 +19,37 @@ angular.module('Services', ['datatables'])
 .factory('Api', function ($http, $q){
 
 // Direccion donde se piden los datos
-	var base = "http://localhost:8000/";
+	var base = "http://localhost:8000/api/";
 
     function get(url){
 		var defer = $q.defer();
+        var promise = defer.promise;
 
-		$http.get(base + url) .success(function (data){defer.resolve(data); }) .error(function (data){defer.reject(); })
-		return defer.promise; 
+        // $http.get(base + url, { cache: true})
+		$http.get(base + url)
+        .success(function (data){
+            defer.resolve(data); console.log(data);
+        }) 
+        .error(function (err){
+            defer.reject(err); console.log(err); $.growl('No hay conexión al servidor', {type: 'warning'});
+        })
+        // .notify(function (data){
+        //     $.growl('Cargando...', {type: 'info'});
+        // })
+        ;
+		
+        return promise; 
 	}
 
 	function post(url, data){
 		var defer = $q.defer();
-		$http.post(base + url, data) .success(function (data, code){if(code==201) defer.resolve(data); else defer.reject(data); }) .error( function (data){console.log(data); $.growl('No hay conexión al servidor', {type: 'warning'}); })
-		return defer.promise;
+        var promise = defer.promise;
+
+		$http.post(base + url, data)
+        .success(function (data, code){if(code==201) defer.resolve(data); else defer.reject(data); })
+        .error( function (data){console.log(data); $.growl('No hay conexión al servidor', {type: 'warning'}); defer.reject(data); })
+		
+        return promise;
 	}
 	return {
 		get		: get,

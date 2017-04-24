@@ -71,9 +71,10 @@
 			representado por
 		@endif
 
-		{{$empresario->nombre}}, mayor de edad, de nacionalidad salvadoreña, del domicilio de {{$empresario->municipio->municipio }} en el departamento
+		{{$empresario->nombre}}, mayor de edad, de nacionalidad salvadoreña, del domicilio de {{$empresario->municipio->nombre }} en el departamento
 
-		{{$empresario->municipio->departamento->departamento}}
+		{{$empresario->municipio->departamento->nombre}}
+		
 		con Documento Único de Identidad (DUI), número {{$empresario->dui}}, la asistencia técnica
 		denominada: "<em>{{$at->tema}}</em> " </p>
 	</article>
